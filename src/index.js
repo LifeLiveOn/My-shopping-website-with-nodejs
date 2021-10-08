@@ -35,7 +35,7 @@ app.get('/products',(req,res)=>{
   res.render('products')
 })
 
-app,get('reports',(req,res)=>{
+app.get('reports',(req,res)=>{
   res.render('reports')
 })
 

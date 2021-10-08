@@ -1,0 +1,32 @@
+{
+  "name": "package",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon --inspect src/index.js",
+    "watch":"node-sass --watch src/resource/scss/app.scss src/public/css/app.css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LifeLiveOn/Nodejs.git"
+  },
+  "keywords": [
+    "nodejs",
+    "test"
+  ],
+  "author": "thanh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LifeLiveOn/Nodejs/issues"
+  },
+  "homepage": "https://github.com/LifeLiveOn/Nodejs#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.4",
+    "handlebars": "^4.7.7",
+    "morgan": "^1.10.0",
+    "node-sass": "^6.0.1"
+  }
+}

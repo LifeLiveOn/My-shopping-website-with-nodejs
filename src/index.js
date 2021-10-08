@@ -14,7 +14,7 @@ app.use(morgan('combined'))
 // use engine handle bar template
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
-app.set('views',path.join(__dirname,'resource\\views'));
+app.set('views',path.join(__dirname,'resource/views'));
 
 // home path, there is get, post, put, detele ex: app.put 
 app.get('/', (req, res) => {

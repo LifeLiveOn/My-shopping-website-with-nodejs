@@ -28,7 +28,7 @@ app.get('/news',(req,res)=>{
 
 
 app.get('/order',(req,res)=>{
-  res.render('search')
+  res.render('order')
 })
 
 app.get('/products',(req,res)=>{

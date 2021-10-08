@@ -27,11 +27,17 @@ app.get('/news',(req,res)=>{
 })
 
 
-app.get('/search',(req,res)=>{
+app.get('/order',(req,res)=>{
   res.render('search')
 })
 
+app.get('/products',(req,res)=>{
+  res.render('products')
+})
 
+app,get('reports',(req,res)=>{
+  res.render('reports')
+})
 
 
 

@@ -3,7 +3,7 @@ const path = require('path')
 var exphbs  = require('express-handlebars'); // it is like render_template from python
 var morgan = require('morgan')
 const app = express()
-//const port = 3000
+const port = process.env.PORT || 3000
 //public folder với các file như img ...
 app.use(express.static(path.join(__dirname, 'public')));
 // mo f12 view console co bieu tuong cua nodejs xai do de debug tren trinh duyet - morgan 
@@ -35,6 +35,6 @@ app.get('/search',(req,res)=>{
 
 
 
-app.listen(process.env.PORT || 5000, () => {
-  console.log(`Example app listening at http://localhost:${process.env.port}`)
+app.listen(process.env.PORT|| 3000, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
 })

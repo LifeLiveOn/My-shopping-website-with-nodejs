@@ -1,8 +1,8 @@
-class controllers {
-    //[Get] /news
-    index(req,res){
-        res.render('news');
-    }
-}
-// xuat ra ngoai cai instance cua class
-module.exports = new controllers;
+const express = require('express');
+const router = express.Router();
+const newscontroller = require('../app/controllers/Newscontrollers') 
+
+router.use('/:slug',newscontroller.show);
+router.use('/', newscontroller.index);
+
+module.exports = router;

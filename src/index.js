@@ -4,12 +4,12 @@ var exphbs  = require('express-handlebars'); // it is like render_template from 
 var morgan = require('morgan')
 const app = express()
 const port = process.env.PORT || 3000
+const route = require('./routes');
 //public folder với các file như img ...
 app.use(express.static(path.join(__dirname, 'public')));
 // mo f12 view console co bieu tuong cua nodejs xai do de debug tren trinh duyet - morgan 
 // http logger
 app.use(morgan('combined'))
-
 
 // use engine handle bar template
 app.engine('handlebars', exphbs());
@@ -21,37 +21,10 @@ app.use(express.urlencoded({
 }));
 app.use(express.json());
 
-// home path, there is get, post, put, detele ex: app.put 
-app.get('/', (req, res) => {
-  console.log(req.body)
-  res.render('home')
-})
+// route init
+route(app);
 
 
-app.get('/news',(req,res)=>{
-  res.render('news')
-})
-
-
-app.get('/order',(req,res)=>{
-  res.render('order')
-})
-
-app.get('/products',(req,res)=>{
-  res.render('products')
-})
-
-app.get('/reports',(req,res)=>{
-  res.render('reports')
-})
-
-app.post('/reports',(req,res)=>{
-  console.log(req.body)
-  res.send('')
-})
-
-
-
-app.listen(process.env.PORT|| 3000, () => {
-  //console.log(`Example app listening at http://localhost:${port}`)
-})
+// app.listen(process.env.PORT|| 3000, () => {
+//   //console.log(`Example app listening at http://localhost:${port}`)
+// })

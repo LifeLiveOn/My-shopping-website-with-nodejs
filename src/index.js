@@ -15,9 +15,15 @@ app.use(morgan('combined'))
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 app.set('views',path.join(__dirname,'resource/views'));
+// this is for get post data in json format
+app.use(express.urlencoded({
+    extended:true
+}));
+app.use(express.json());
 
 // home path, there is get, post, put, detele ex: app.put 
 app.get('/', (req, res) => {
+  console.log(req.body)
   res.render('home')
 })
 
@@ -37,6 +43,11 @@ app.get('/products',(req,res)=>{
 
 app.get('/reports',(req,res)=>{
   res.render('reports')
+})
+
+app.post('/reports',(req,res)=>{
+  console.log(req.body)
+  res.send('')
 })
 
 

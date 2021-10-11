@@ -2,29 +2,18 @@ const newsRouter = require('./news');
 const siteRouter = require('./sites');
 
 function route(app){
-
+    app.post('/reports',(req,res)=>{
+        console.log(req.body)
+       res.send('')
+     })
     
     app.use('/news',newsRouter);
-    app.use('/',siteRouter);
+
     app.use('/products',siteRouter);
+    app.use('/',siteRouter);
 
-    // app.get('/order',(req,res)=>{
-    //     res.render('order')
-    // })
-      
-    // // app.get('/products',(req,res)=>{
-    // //     res.render('products')
-    // //   })
-    
-    // app.get('/reports',(req,res)=>{
-    //     res.render('reports')
-    //   })
-      
-    // app.post('/reports',(req,res)=>{
-    //     console.log(req.body)
-    //     res.send('')
-    //   })
+   
 }
-
+// npx kill-port 3000  de end localhost
 module.exports = route;
 

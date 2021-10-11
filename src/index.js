@@ -22,9 +22,11 @@ app.use(express.urlencoded({
 app.use(express.json());
 
 // route init
+
 route(app);
 
 
-// app.listen(process.env.PORT|| 3000, () => {
-//   //console.log(`Example app listening at http://localhost:${port}`)
-// })
+
+app.listen(process.env.PORT|| 3000, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+})

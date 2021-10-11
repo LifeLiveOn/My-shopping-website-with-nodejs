@@ -1,11 +1,17 @@
 class SitesController{
     //get /
-    home(req,res){
-        res.render('home');
-    }
     // [get] /products
     product(req,res){
-        res.render('products')
+        res.render('products');
+    }
+    order(req,res){
+        res.render('order');
+    }
+    report(req,res){
+        res.render('reports');
+    }
+    home(req,res){
+        res.render('home');
     }
 }
 

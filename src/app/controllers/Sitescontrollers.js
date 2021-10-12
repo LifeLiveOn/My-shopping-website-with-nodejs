@@ -1,18 +1,18 @@
-class SitesController{
+class SitesController {
     //get /
     // [get] /products
-    product(req,res){
+    product(req, res) {
         res.render('products');
     }
-    order(req,res){
+    order(req, res) {
         res.render('order');
     }
-    report(req,res){
+    report(req, res) {
         res.render('reports');
     }
-    home(req,res){
+    home(req, res) {
         res.render('home');
     }
 }
 
-module.exports = new SitesController;
+module.exports = new SitesController();

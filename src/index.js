@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // http logger use f12
-app.use(morgan('combined'));
+    app.use(morgan('combined'));
 
 // use engine handle bar template
 app.engine('handlebars', exphbs());

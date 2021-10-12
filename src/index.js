@@ -16,12 +16,12 @@ app.use(express.json());
     app.use(morgan('combined'));
 
 // use engine handle bar template
-app.engine('handlebars', exphbs());
-app.set('view engine', 'handlebars');
-app.set('views', path.join(__dirname, 'resource/views'));
+  app.engine('handlebars', exphbs());
+      app.set('view engine', 'handlebars');
+      app.set('views', path.join(__dirname, 'resource/views'));
 
 // route init
-route(app);
+      route(app);
 
 app.listen(process.env.PORT || 3000, () => {
     console.log(`Example app listening at http://localhost:${port}`);

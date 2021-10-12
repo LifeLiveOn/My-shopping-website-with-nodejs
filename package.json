@@ -24,7 +24,8 @@
     "url": "https://github.com/LifeLiveOn/Nodejs/issues"
   },
   "homepage": "https://github.com/LifeLiveOn/Nodejs#readme",
-  "lint-staged":  {
+
+  "lint-staged": {
     "src/**/*.{js,json,scss}": "prettier --single-quote --trailing-comma all --tab-width 4 --write"
   },
   "husky": {

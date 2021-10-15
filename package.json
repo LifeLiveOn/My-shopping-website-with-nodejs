@@ -5,6 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "beautiful": "lint-staged",
+    "beautify": "prettier --single-quote --trailing-comma all --tab-width 4 --write src/**/*.{js,json,scss}",
     "start": "nodemon --inspect src/index.js",
     "prepare": "husky install",
     "watch": "node-sass --watch src/resource/scss/app.scss src/public/css/app.css",
@@ -24,7 +25,6 @@
     "url": "https://github.com/LifeLiveOn/Nodejs/issues"
   },
   "homepage": "https://github.com/LifeLiveOn/Nodejs#readme",
-
   "lint-staged": {
     "src/**/*.{js,json,scss}": "prettier --single-quote --trailing-comma all --tab-width 4 --write"
   },
@@ -35,14 +35,15 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "express-handlebars": "^5.3.4"
+    "express-handlebars": "^5.3.4",
+    "mongoose": "^6.0.10"
   },
   "devDependencies": {
+    "husky": "^7.0.2",
+    "lint-staged": "^11.2.3",
     "morgan": "^1.10.0",
     "node-sass": "^6.0.1",
     "nodemon": "^2.0.4",
-    "husky": "^7.0.2",
-    "lint-staged": "^11.2.3",
     "prettier": "^2.4.1"
   }
 }

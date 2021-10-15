@@ -7,10 +7,10 @@ function route(app) {
         res.send('');
     });
 
-    app.use('/news', newsRouter);
+    app.get('/news', newsRouter);
 
-    app.use('/products', siteRouter);
-    app.use('/', siteRouter);
+    app.get('/products', siteRouter);
+    app.get('/', siteRouter);
 }
 // npx kill-port 3000  de end localhost
 module.exports = route;

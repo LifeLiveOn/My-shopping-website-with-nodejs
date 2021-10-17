@@ -8,15 +8,21 @@
     <button type="submit" class="btn btn-primary mb-3">Confirm identity</button>
   </div>
 </form> --}}
-
 <div class="container">
   <div class="row">
-    {{#each list_of_products }}
-    <div class="col-4">
-      <h1>{{this.name}}</h1>
-      <h1>{{this.price}}</h1>
-      <img src="{{this.images}}">
-    </div>
+    {{#each Products }}
+      <div class="col-4">
+        <div class="card" style="width: 18rem;">
+          <a href="/products/{{this.slug}}"> 
+            <img src="{{this.image}}" class="card-img-top" alt="...">
+          </a>
+              <div class="card-body">
+                <h5 class="card-title">{{this.pro_name}}</h5>
+                <p class="card-text">{{this.description}}</p>
+                <a href="/products/{{this.slug}}" class="btn btn-primary">View detail</a>
+              </div>
+        </div>
+      </div>
     {{/each}}
   </div>
 </div>

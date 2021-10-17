@@ -3,7 +3,7 @@ var db = require('../../config/db/database');
 
 class SitesController {
     
-    // [get] /product
+    // [get] /products
     product(req, res, next) {
         // use lean to by pass permission from express
         products.find({}).lean()
@@ -13,7 +13,7 @@ class SitesController {
             .catch(next);
         
     }
-order(req, res) {
+    order(req, res) {
         res.render('order');
     }
     report(req, res) {

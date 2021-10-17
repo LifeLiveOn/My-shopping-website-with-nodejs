@@ -2,10 +2,10 @@ class NewsController {
     index(req, res) {
         res.render('news');
     }
-    // them parameters sau / news
+    // add parameters sau / news
     // [get] /news/:slug
     show(req, res) {
-        res.send('NEWS DETAIL');
+        res.send('' + req.params.id);
     }
 }
 

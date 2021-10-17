@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const newscontroller = require('../app/controllers/Newscontrollers');
 
-router.get('/:slug', newscontroller.show);
-router.get('/', newscontroller.index);
-
+router.get('/news', newscontroller.index);
+router.get('/news/:id', newscontroller.show);
 module.exports = router;

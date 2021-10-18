@@ -1,7 +1,9 @@
 var mongoose = require('mongoose');
 console.log(process.env.MongoDB_URL);
-mongoose.connect(process.env.MongoDB_URL  || 'mongodb://localhost:27017/toy_store_dev',{
+//|| 'mongodb://localhost:27017/toy_store_dev'
+mongoose.connect(process.env.MongoDB_URL || 'mongodb://localhost:27017/toy_store_dev' ,{
     useNewUrlParser: true,
+    useUnifiedTopology: true
 });
 var conn = mongoose.connection;
 conn.on('connected', function () {

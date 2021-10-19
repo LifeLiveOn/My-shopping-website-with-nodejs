@@ -1,3 +1,4 @@
+// this handle sites pages
 const products = require('../../models/products')
 var db = require('../../config/db/database');
 

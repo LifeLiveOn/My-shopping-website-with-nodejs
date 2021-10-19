@@ -1,3 +1,4 @@
+// quick example of request parameters;
 class NewsController {
     index(req, res) {
         res.render('news');

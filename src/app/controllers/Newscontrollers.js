@@ -1,12 +1,16 @@
 // quick example of request parameters;
 class NewsController {
-    index(req, res) {
+    //[get] /news
+    index(req, res,next) {
         res.render('news');
+       // next();
     }
     // add parameters sau / news
+
     // [get] /news/:slug
-    show(req, res) {
-        res.send('' + req.params.id);
+    show(req, res,next) {
+        res.send('' + req.body.slug);
+        //next();
     }
 }
 

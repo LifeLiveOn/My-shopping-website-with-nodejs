@@ -36,6 +36,16 @@ class ProductsController {
         //res.send('Product save to database');
        
     }
+    //[put] products/:id
+    update(req, res,next) {
+        //res.json(req.body);
+        const formData = req.body;
+        console.log(req.body.image)
+        formData.image = "img/"+req.body.image;
+        products.updateOne({_id:req.params.id}, formData)
+            .then(() => res.redirect('/adminmanage/v'))
+            .catch(next);
+    }
 }
 
 module.exports = new ProductsController();

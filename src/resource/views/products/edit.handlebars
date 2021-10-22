@@ -1,0 +1,27 @@
+<div class="container" style="margin-top:10%"> 
+    <h1 style="color:black;">Cap nhat san pham</h1>
+
+    <form method="post" action="/products/{{Products._id}}?_method=PUT">
+        <div class="mb-3">
+            <label for="productName" class="form-label">Product Name/Title</label>
+            <input type="text" class="form-control" value='{{Products.product_name}}' name="product_name" placeholder="Enter your Product title">
+        </div>
+        <div class="mb-3">name
+            <label for="productDescription" class="form-label">Product Description</label>
+            <textarea type="text" class="form-control"  name="description" placeholder="Description" rows="3">{{Products.description}}</textarea>
+        </div>
+        <div class="mb-3">
+            <label for="productCate" class="form-label">Category</label>
+            <input type="text" class="form-control" value='{{Products.category}}' name="category" placeholder="Category">
+        </div>
+        <div class="mb-3">
+            <label for="productPrice" class="form-label">Price</label>
+            <input type="text" class="form-control" value='{{Products.price}}' name="price" placeholder="Price">
+        </div>
+        <div class="mb-3">
+            <label for="formFile" class="form-label">image file </label>
+            <input class="form-control" type="file" value='{{Products.image}}' name="image">{{Products.image}}
+        </div>
+        <button type="submit" class="btn btn-info" id="submitbutton">Thêm Product</button>
+    </form>
+</div>

@@ -24,6 +24,11 @@ class Admincontrollers{
             .catch(next);
 
     }
+    delete(req, res, next){
+        products.findByIdAndRemove(req.params.id).lean()
+            .then(()=> res.redirect('/adminmanage/v'))
+            .catch(next);
+    }
 
 }
 module.exports = new Admincontrollers();

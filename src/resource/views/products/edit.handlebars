@@ -4,7 +4,7 @@
     <form method="post" action="/products/{{Products._id}}?_method=PUT">
         <div class="mb-3">
             <label for="productName" class="form-label">Product Name/Title</label>
-            <input type="text" class="form-control" value='{{Products.product_name}}' name="product_name" placeholder="Enter your Product title">
+            <input type="text" class="form-control" value='{{Products.product_name}}' name="product_name" placeholder="Enter your Product title" required>
         </div>
         <div class="mb-3">name
             <label for="productDescription" class="form-label">Product Description</label>
@@ -12,16 +12,22 @@
         </div>
         <div class="mb-3">
             <label for="productCate" class="form-label">Category</label>
-            <input type="text" class="form-control" value='{{Products.category}}' name="category" placeholder="Category">
+            <input type="text" class="form-control" value='{{Products.category}}' name="category" placeholder="Category" required>
         </div>
         <div class="mb-3">
             <label for="productPrice" class="form-label">Price</label>
             <input type="text" class="form-control" value='{{Products.price}}' name="price" placeholder="Price">
         </div>
-        <div class="mb-3">
-            <label for="formFile" class="form-label">image file </label>
-            <input class="form-control" type="file" value='{{Products.image}}' name="image">{{Products.image}}
+        <div class="mb-5">
+                <label for="Image" class="form-label"> image Upload with Preview</label>
+                <input class="form-control" type="file" name="image" id="formFile" onchange="preview()" required>
         </div>
+            <img id="frame" src="" class="img-fluid" />
         <button type="submit" class="btn btn-info" id="submitbutton">Thêm Product</button>
     </form>
+    <script>
+            function preview() {
+                frame.src = URL.createObjectURL(event.target.files[0]); // name.jpg
+            }
+        </script>
 </div>

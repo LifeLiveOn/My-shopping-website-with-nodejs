@@ -14,6 +14,26 @@ class ProductsController {
         //res.send('Product details-' + req.params.slug);
     }
 
+    //[get] /products/category/:product_category || name
+    category(req,res,next){
+        products.find({category:req.params.name}).lean()
+            .then(Products =>{
+                //res.json(Products);
+                res.render('products',{Products})
+            })
+            .catch(next);
+    }
+    
+    //[get] /products/search/:product_name
+    search(req,res,next){
+        products.find({product_name:req.params.name}).lean()
+            
+            .then(Products =>{
+                console.log(req.params.name);
+                res.json(Products);
+            })
+            .catch(next);
+    }
 
     //[get] /products/create
     create(req,res,next){
@@ -25,7 +45,7 @@ class ProductsController {
         //console.log(req.body);
         const formData = req.body;
         console.log(req.body.image)
-        formData.image = "img/"+req.body.image;
+        formData.image = "img/"+req.file.filename;
         formData.slug = formData.product_name + formData.category;
         const product = new products(formData);
         product.save()
@@ -46,6 +66,8 @@ class ProductsController {
             .then(() => res.redirect('/adminmanage/v'))
             .catch(next);
     }
+
+
 }
 
 module.exports = new ProductsController();

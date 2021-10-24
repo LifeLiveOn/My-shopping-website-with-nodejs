@@ -4,7 +4,7 @@
     <form method="post" action="/products/{{Products._id}}?_method=PUT">
         <div class="mb-3">
             <label for="productName" class="form-label">Product Name/Title</label>
-            <input type="text" class="form-control" value='{{Products.product_name}}' name="product_name" placeholder="Enter your Product title" required>
+            <input type="text" class="form-control" style="text-transform: lowercase" value='{{Products.product_name}}' name="product_name" placeholder="Enter your Product title" required>
         </div>
         <div class="mb-3">name
             <label for="productDescription" class="form-label">Product Description</label>
@@ -12,7 +12,12 @@
         </div>
         <div class="mb-3">
             <label for="productCate" class="form-label">Category</label>
-            <input type="text" class="form-control" value='{{Products.category}}' name="category" placeholder="Category" required>
+            <select class="form-select" name="category" required>
+                <option selected disabled value="">{{Products.category}}</option>
+                <option value="figure">figure</option>
+                <option value="gun_model">gun_model</option>
+                <option value="lego">lego</option>
+            </select>
         </div>
         <div class="mb-3">
             <label for="productPrice" class="form-label">Price</label>

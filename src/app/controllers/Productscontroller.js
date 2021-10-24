@@ -26,8 +26,9 @@ class ProductsController {
     
     //[get] /products/search/:product_name
     search(req,res,next){
-        products.find({product_name:req.params.name}).lean()
-            
+           var value = req.params.name;
+           
+            products.find({product_name:{'$regex' :String(value) }}).lean()
             .then(Products =>{
                 console.log(req.params.name);
                 res.json(Products);

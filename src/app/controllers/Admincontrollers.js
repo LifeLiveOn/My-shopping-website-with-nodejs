@@ -8,8 +8,8 @@ class Admincontrollers{
 
     view(req, res, next){
         products.find({}).lean()
-            .then(Products => {
-                res.render('admin/viewall',{Products})
+            .then(data => {
+                res.render('admin/viewall',{data})
             })
             .catch(next);
     }

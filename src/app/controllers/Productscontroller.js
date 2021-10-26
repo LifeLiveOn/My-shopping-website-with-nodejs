@@ -14,26 +14,24 @@ class ProductsController {
         //res.send('Product details-' + req.params.slug);
     }
 
-    //[get] /products/category/:product_category || name
+    //[get] /products/category?keyword= || name
     category(req,res,next){
-        products.find({category:req.params.name}).lean()
+        var product_category = req.query.keyword;
+        products.find({category:product_category}).lean()
             .then(Products =>{
                 //res.json(Products);
                 res.render('products',{Products})
             })
             .catch(next);
     }
-    
-    //[get] /products/search/:product_name
+    //[get] /products/search?name=   // ex:name=abc, 1 abc, abcd23 return result the same as 'abc'
     search(req,res,next){
-           var value = req.params.name;
-           
-            products.find({product_name:{'$regex' :String(value) }}).lean()
-            .then(Products =>{
-                console.log(req.params.name);
-                res.json(Products);
-            })
-            .catch(next);
+            const Searchvalue = req.query.name;
+            products.find({'product_name':new RegExp(Searchvalue, 'i')})
+                .then(data =>{
+                    res.send(data);
+                })
+                .catch(next);
     }
 
     //[get] /products/create
@@ -50,7 +48,7 @@ class ProductsController {
         formData.slug = formData.product_name + formData.category;
         const product = new products(formData);
         product.save()
-            .then(() => res.redirect('/products'))
+            .then(() => res.redirect('/adminmanage/v'))
             .catch(error =>{
 
             });

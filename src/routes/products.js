@@ -15,18 +15,12 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage:storage });
 
-
-
-
-
-
-
 router.get('/search',productcontroller.search);
 router.get('/create',productcontroller.create);
 router.post('/add',upload.single('image'),productcontroller.add);
 router.put('/:id',productcontroller.update); // nhan id tu edit.hbs de update du lieu 
 router.get('/category',productcontroller.category);
-router.get('/:slug', productcontroller.show);
+router.get('/:id', productcontroller.show);
 
 
 

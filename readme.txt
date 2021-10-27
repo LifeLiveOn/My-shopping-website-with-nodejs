@@ -10,6 +10,8 @@ npm start de chay web , npm run watch de convert cscc qua css
 -- mot so bug dang noi
 xai form validation example cua bootstrap se bao loi va ko post dc, xai form bth va chi them required o cuoi syntax 
 xai multer the lam middle ware cho uploading file
+xài express json để xài req.body 
+xài override-method để xài put
 
 yeu cầu để chạy file
 // npx kill-port 3000  de end localhost nếu bị trùng, already existed port 

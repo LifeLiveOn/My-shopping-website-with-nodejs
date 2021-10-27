@@ -5,7 +5,7 @@ var db = require('../../config/db/database');
 class ProductsController {
     //[get] /products/:slug
     show(req,res,next){
-        products.findOne({slug:req.params.slug}).lean()
+        products.findOne({_id:req.params.id}).lean()
             .then(Products =>{
                 //res.json(Products)
                 res.render('products/details',{Products})

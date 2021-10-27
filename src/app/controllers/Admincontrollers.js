@@ -25,6 +25,7 @@ class Admincontrollers{
             .catch(next);
 
     }
+    //[get]
     delete(req, res, next){
         products.findByIdAndRemove(req.params.id).lean()
             .then(()=> res.redirect('/adminmanage/v'))

@@ -17,6 +17,7 @@ const db = require('./config/db/database'); // use data base
 db.conn;
 
 route(app); // route init
+
 const port = process.env.PORT || 3000;
 app.listen(process.env.PORT || 3000, () => {
     console.log(`app listening at http://localhost:${port}`);

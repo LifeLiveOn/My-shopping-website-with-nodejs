@@ -1,16 +1,14 @@
 const newsRouter = require('./news');
 const siteRouter = require('./sites');
 const productsRouter = require('./products');
-function route(app) {
-    // app.post('/reports', (req, res) => {
-    //     console.log(req.body);
-    //     res.send('');
-    // });
-   app.get('/', siteRouter); // go to /routes sites.js
-   app.get('/news', newsRouter);
-   app.get('/news/:id',newsRouter);
-   app.get('/products', siteRouter);
-   app.get('/products/:slug',productsRouter);
+const admincontrollers = require('./admin');
+const register = require('./register');
+function route(app) { // go to /routes sites.js
+   app.use('/action',register);
+   app.use('/news', newsRouter); // test code page 
+   app.use('/products', productsRouter); // product page 
+   app.use('/adminmanage',admincontrollers); // admin page
+   app.use('/', siteRouter); // home page 
 }
 
 module.exports = route;

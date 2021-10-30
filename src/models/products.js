@@ -2,11 +2,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const ProductSchema = new Schema({
-    product_name: { type: String, default: null, maxLength: 250 },
-    description: { type: String, default: null },
-    category: { type: String, default: null, maxLength: 100 },
-    price: { type: Number, default: 0 },
-    image: { type: String, default: null, maxLength: 300 },
+    product_name: { type: String, default: null, require:true },
+    description: { type: String, default: null,require:true },
+    category: { type: String, default: null, maxLength: 100,require:true },
+    price: { type: Number, default: 0,require:true },
+    image: { type: String, default: null, maxLength: 300,require:true },
     slug:{type: String, default: null, maxLength:30}
 });
 

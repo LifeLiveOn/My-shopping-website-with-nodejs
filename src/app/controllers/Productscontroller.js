@@ -1,7 +1,6 @@
 // this handle product details pages 
 const products = require('../../models/products')
 var db = require('../../config/db/database');
-
 class ProductsController {
     //[get] /products/:slug
     show(req,res,next){
@@ -27,11 +26,13 @@ class ProductsController {
     //[get] /products/search?name=   // ex:name=abc, 1 abc, abcd23 return result the same as 'abc'
     search(req,res,next){
             const Searchvalue = req.query.name;
-            products.find({'product_name':new RegExp(Searchvalue, 'i')})
+            let regex = new RegExp(Searchvalue,'i');
+            products.find({'product_name':regex})
                 .then(data =>{
                     res.send(data);
                 })
                 .catch(next);
+        
     }
 
     //[get] /products/create

@@ -1,0 +1,37 @@
+<div class="container" style="margin-top:10%">  
+  <form method="get" action="/adminmanage/bills/find">
+      <div class="input-group">
+        <div class="col-xs-3">
+            <label for="productName" class="form-label">Tim san pham</label>
+            <input type="text" class="form-control" style="text-transform: lowercase" name="product_name" placeholder="Enter your Product name" required>
+        </div>
+      </div>
+        <button type="submit" class="btn btn-info" id="submitbutton"><i class="fas fa-search"></i>Find Product</button>
+  </form>
+<button type="button" class="btn btn-primary" onclick="myFunction()">Show</button>
+
+<div id="myDIV">
+  {{#if data}}
+  <ul class="list-group">
+    {{#each data }}
+    <li class="list-group-item list-group-item-dark">{{this.product_name}}</li>
+    {{/each}}
+</ul>
+  {{else}}
+    <h1>unkown product</h1>
+  {{/if}}
+</div>
+</div>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myDIV");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+    
+</div>

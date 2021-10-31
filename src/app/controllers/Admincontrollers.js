@@ -6,6 +6,19 @@ class Admincontrollers{
         res.redirect('/action/login');
         //res.render('admin/adminmenu');
     }
+    //[get] /adminmanage/bills
+    bills(req, res, next){
+        res.render('admin/bills');
+    }
+    search(req, res, next){
+        const Searchvalue = req.query.product_name;
+        let regex = new RegExp(Searchvalue,'i');
+        products.find({'product_name':regex}).lean()
+            .then(data=>{
+                res.render('admin/bills',{data})
+        })
+        .catch(next);
+    }
     //[get] /adminmanage/v show all products 
     view(req, res, next){
         products.find({}).lean()

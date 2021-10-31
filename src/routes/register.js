@@ -15,7 +15,7 @@ router.use(session({
     saveUninitialized: false, 
     resave: false, 
     store: MongoStore.create({ 
-        mongoUrl: 'mongodb://localhost/toy_store_dev',
+        mongoUrl: process.env.MongoDB_URL||'mongodb://localhost/toy_store_dev',
         ttl: 3 * 60 * 60, // 60 seconds * 60 minutes * 3 hours
      })
   }));

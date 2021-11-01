@@ -10,7 +10,19 @@ app.use(express.static(path.join(__dirname, 'public'))); //allow to use public f
 app.use(express.urlencoded({ extended: true }))
 app.use(morgan('combined')); // http logger use f12
 app.use(methodOverride('_method'));
-app.engine('handlebars', exphbs()); // use engine handle bar template
+var hbs = exphbs.create({
+    // Specify helpers which are only registered on this instance.
+    helpers: {
+        calculate: function (json_list) { 
+            var sum = 0
+            for(var i =0;i<json_list.length;i++){
+                sum += json_list[i].price * json_list[i].quantity;
+            }
+            return sum;
+        }
+    }
+});
+app.engine('handlebars', hbs.engine); // use engine handle bar template
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'resource/views'));
 const db = require('./config/db/database'); // use data base

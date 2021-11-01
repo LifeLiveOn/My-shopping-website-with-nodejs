@@ -5,14 +5,14 @@
             <label for="productName" class="form-label">Product Name/Title</label>
             <input type="text" class="form-control" style="text-transform: lowercase" name="product_name" placeholder="Enter your Product title" required>
         </div>
-        <div class="mb-3">name
+        <div class="mb-3">
+            <label for="quantity" class="form-label">Stock qty</label>
+            <input type="text" class="form-control" name="stock" required>
+        </div>
+        <div class="mb-3">
             <label for="productDescription" class="form-label">Product Description</label>
             <textarea type="text" class="form-control" name="description" placeholder="Description" rows="3"></textarea>
         </div>
-        {{!-- <div class="mb-3">
-            <label for="productCate" class="form-label">Category</label>
-            <input type="text" class="form-control" name="category" placeholder="Category" required>
-        </div> --}}
         <div class="mb-3">
             <select class="form-select" name="category" required>
                 <option selected disabled value="">Choose category</option>

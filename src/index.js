@@ -19,6 +19,20 @@ var hbs = exphbs.create({
                 sum += json_list[i].price * json_list[i].quantity;
             }
             return sum;
+        },
+        jsonify:function(object){
+            return JSON.stringify(object);
+
+        },
+        bill:function(json_list){
+            var sum = 0
+            for(var i =0;i<json_list.length;i++){
+                sum += json_list[i].price
+            }
+            return sum;
+        },
+        sum:function(json){
+            return json.price * json.quantity;
         }
     }
 });

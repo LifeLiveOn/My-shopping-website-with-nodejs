@@ -1,43 +1,74 @@
-<div class="container-fluid">
-   
-    <div class="card">
-        <div class="row g-0">
-            <div class="col-md-6 border-end">
-                <div class="d-flex flex-column justify-content-center">
-                    <div class="main_image"> <img src="img/shopping.webp" id="main_product_image" width="350"> </div>
-                    <div class="thumbnail_images">
-                        <ul id="thumbnail">
-                            <li><img onclick="changeImage(this)" src="img/shopping.webp" width="70"></li>
-                            <li><img onclick="changeImage(this)" src="img/shopping (1).webp" width="70"></li>
-                            <li><img onclick="changeImage(this)" src="img/shopping (2).webp" width="70"></li>
-                            <li><img onclick="changeImage(this)" src="img/shopping (3).webp" width="70"></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="p-3 right-side">
-                    <div class="d-flex ">
-                        <h3 style="text-align: center">BEARBRICK LIMITED</h3> 
-                    </div>
-                    <div class="mt-2 pr-3 content">
-                        <p>The concept and design is based on another MediCom Toy development - The Kubrick - which is intended to pay homage to Stanley Kubrick, one of humanity's greatest film directors.</p>
-                        
-                    </div>
-                     <div class="product_Des">
-                  <span class="pro_Type"> <strong>Category:</strong> <a>Figures</a>
-                  <span class="pro_Price"> <strong>Price:</strong> <a>100$</a>
-                   <span class="pro_Quantity"><strong>Quantity:</strong> <a>10</a>
-                   
-                     
-                    
-                    </div>
-                    <div class="buttons d-flex flex-row mt-5 gap-3">   <button style="height:50px; width:200px;" class="btn1 btn-outline-dark" >Add to cart</button> </div>
-                   
-                </div>
-            </div>
-        </div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+    		<div class="invoice-title">
+    			<h2 style="margin-top: 5%;"> Customer Bill</h2><h3 class="pull-right">{{result._id}}</h3>
+    		</div>
+    		<hr>
+    		
+    			<div class="col-xs-6 text-right">
+    				<address >
+    					<strong >Order Date:</strong>
+                        <br>{{result.date}}<br><br>
+    				</address>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+    
+    <div class="row">
+    	<div class="col-md-12">
+    		<div class="panel panel-default">
+    			<div class="panel-heading">
+    				<h3 class="panel-title" style="margin-left:5%;"><strong>Order summary</strong></h3>
+    			</div>
+    			<div class="panel-body">
+    				<div class="table-wrapper-scroll-y my-custom-scrollbar">
+    					<table class="table table-scroll table-striped">
+    						<thead>
+                                <tr>
+        							<th class="text-center">Product name</th>
+        							<th class="text-center"><strong>Price</strong></th>
+        							<th class="text-center"><strong>Quantity</strong></th>
+        							<th class="text-right"><strong>Totals</strong></th>
+                                </tr>
+    						</thead>
+    						<tbody>
+    							<!-- foreach ($order->lineItems as $line) or some such thing here -->
+								{{#each arr}}
+    							<tr>
+    								<td>{{this.product_name}}</td>
+    								<td class="text-center">{{this.price}}</td>
+    								<td class="text-center">{{this.quantity}}</td>
+    								<td class="text-right">{{sum this}}</td>
+    							</tr>
+    							{{/each}}	
+    							
+    						</tbody>
+    					</table>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
     </div>
 </div>
-
-<script src="/js/productdemo.js"></script>
+<table class="table table-clear" >
+                            <tbody>
+                                <tr>
+                                     <td class="left">
+                                        <strong></strong>
+                                    </td>
+                                     <td class="left">
+                                        <strong></strong>
+                                    </td>
+                                     <td class="left text-center" >
+                                        <strong></strong>
+                                    </td>
+                                    <td class="left" >
+                                        <strong style="text-align:center;">Total</strong>
+                                    </td>
+                                    <td class="right">$1800</td>
+                                </tr>
+            </tbody>  
+     </table>    
+     <h2 style="margin-left: 50%;"><a href='/adminmanage' style="color:black";> go back</a></h2>

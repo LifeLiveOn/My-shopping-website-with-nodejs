@@ -87,9 +87,17 @@ class Admincontrollers{
     }
     //print out the bill and save it to database
     printbill(req, res, next){
-        const formData = req.body;
-        formData.date = new Date();
-        const bill = new bills(formData);
+        console.log((req.body.object[0]))
+        // res.send("wait");
+        // const objectsData = req.body;
+        const result = {};
+        result.detail = req.body.object;
+        result.price = req.body.total_price;
+        result.date = new Date()
+        // objectsData.detail = req.body.object;
+        // objectsData.date = new Date();
+        // objectsData.price = req.body.total_price
+        const bill = new bills(result);
         bill.save()
             .then(() => res.redirect('/adminmanage/bills'))
             .catch(error =>{

@@ -58,7 +58,7 @@
             </tr>
         </thead>
         <tbody>
-          <form method="post" action="printbill">
+          <form method="post" action="/adminmanage/printbill">
           {{#each cartitem}}
             <tr>
               {{!-- these hidden input could be submit to create a bill but im too lazy for that so i will just store time date and price --}}
@@ -68,6 +68,7 @@
                 <td class="qty">{{this.quantity}}</td>
                 {{!-- <input type="hidden" name="price" value="{{this.price}}"> --}}
                 <td class="price">{{this.price}}</td>
+                <input type="hidden" name="object" value="{{jsonify this}}">
                 <td><a href='/adminmanage/bills/delcart/{{this._id}}'>delete</a> <i class="fas fa-trash"></i></td>
             </tr>
           {{/each}}
@@ -82,7 +83,7 @@
                    </td>
                                     
                    <td class="right">{{calculate cartitem}}</td>
-                    <input type="hidden" name="price" value="{{calculate cartitem}}">
+                    <input type="hidden" name="total_price" value="{{calculate cartitem}}">
                   </tr>
             </tbody>  
         </table>    

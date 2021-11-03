@@ -12,10 +12,12 @@ xai form validation example cua bootstrap se bao loi va ko post dc, xai form bth
 xai multer the lam middle ware cho uploading file
 xài express json để xài req.body 
 xài override-method để xài put
+express session để login
+mongp-connect để lưu session
+generate random string ( npm randomstring)
 
 yeu cầu để chạy file
 // npx kill-port 3000  de end localhost nếu bị trùng, already existed port 
 /npm i --save -dev express 
 npm i --save -dev nodemon
 thiếu cái j thì làm tương tự và thêm tên của nó vô npm i --save -dev {tên}
-

@@ -30,20 +30,29 @@ class Admincontrollers{
                cartData.quantity = 1;
                const cart = new carts(cartData);
                cart.save();
-               res.redirect('/adminmanage/bills')
+               res.redirect('/adminmanage/bills/find?product_name=')
            })
            .catch(next);
        
     }
+    // show both search and cart 
+    async search2(req, res, next){
+        const Searchvalue = req.query.product_name;
+        let regex = new RegExp(Searchvalue,'i');
+        const data = await products.find({'product_name':regex}).lean().exec();
+        const cartitem = await carts.find({}).lean().exec();
+            res.render('admin/bills',{data,cartitem})
+        }
+    
     // /bills/find?product_name=
     search(req, res, next){
         const Searchvalue = req.query.product_name;
         let regex = new RegExp(Searchvalue,'i');
         products.find({'product_name':regex}).lean()
             .then(data=>{
-                res.render('admin/bills',{data})
-        })
-        .catch(next);
+                res.render('admin/bills',{data}) 
+            })
+            .catch(next);
     }
     //[get] /adminmanage/v show all products 
     view(req, res, next){
@@ -67,13 +76,13 @@ class Admincontrollers{
     //[get]
     delete(req, res, next){
         products.findByIdAndRemove({_id:req.params.id}).lean()
-            .then(()=> res.redirect('/adminmanage/bills'))
+            .then(()=> res.redirect('/adminmanage/v'))
             .catch(next);
     }
     //delete chosen item from a cart
     delcart(req, res, next){
         carts.remove({_id:req.params.id}).lean()
-            .then(()=> res.redirect('/adminmanage/bills'))
+            .then(()=> res.redirect('/adminmanage/bills/find?product_name='))
             .catch(next);
     }
     //print out the bill and save it to database

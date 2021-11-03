@@ -385,10 +385,18 @@ h1 {
           margin-left: 10%
 
       }
+      textarea.form-control{
+         margin-left:10%;
+         width:60%;
+      }
+      .form-select{
+         margin-left:10%;
+         width:30%;
+      }
       input.form-control{
        
         margin-left: 10%;
-        width: 150%;
+        width: 50%;
       }
       .btn2 {
         display: inline-block;

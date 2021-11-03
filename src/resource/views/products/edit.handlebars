@@ -6,7 +6,7 @@
             <label for="productName" class="form-label">Product Name/Title</label>
             <input type="text" class="form-control" style="text-transform: lowercase" value='{{data.product_name}}' name="product_name" placeholder="Enter your Product title" required>
         </div>
-        <div class="mb-3">name
+        <div class="mb-3">
             <label for="productDescription" class="form-label">Product Description</label>
             <textarea type="text" class="form-control"  name="description" placeholder="Description" rows="3">{{data.description}}</textarea>
         </div>
@@ -29,7 +29,7 @@
                 <input class="form-control" type="file" name="image" id="formFile" onchange="preview()" required>
         </div>
             <img id="frame" src="" class="img-fluid" />
-        <button type="submit" class="btn btn-info" id="submitbutton">update Product</button>
+        <button type="submit" class="btn-outline-dark" id="submitbutton">update Product</button>
     </form>
     <script>
             function preview() {

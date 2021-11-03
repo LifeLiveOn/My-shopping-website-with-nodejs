@@ -28,6 +28,8 @@ app.set('views', path.join(__dirname, 'resource/views'));
 const db = require('./config/db/database'); // use data base
 db.conn;
 
+
+
 route(app); // route init
 
 const port = process.env.PORT || 3000;

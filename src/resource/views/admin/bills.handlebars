@@ -6,7 +6,7 @@
       <div class="input-group">
         <div class="col-xs-3" style="margin-top: 110px;">
           <h1><a href='/adminmanage' style="color:black";> go back</a></h1> 
-            <label for="productName" class="form-label">Searching product</label>
+            <h3 for="productName" class="form-label">Searching product</h3>
             <input type="text" class="form-control" style="text-transform: lowercase" name="product_name" placeholder="Enter your Product name">
             <button type="submit" class="btn1 btn-outline-dark" id="submitbutton"><i class="fas fa-search" ></i>Find Product</button>
             <button type="button" class="btn1 btn-outline-dark" onclick="myFunction()">Show</button>
@@ -15,16 +15,18 @@
 
       <div id="myDIV" style="padding:2%">
         {{#if data}}
-          <div class="table-wrapper-scroll-y my-custom-scrollbar"> 
-          <table class="table table-scroll table-striped">
-        <thead>
+        <table class="table table-dark table-hover table-scroll table-striped">
+          <thead>
             <tr>
                 <th class="name">Product Name</th>
-                <th class="qty">Quantity</th>
-                <th class="price">Unit Price</th>
-                <th class="add">add to cart</th>
+                <th class="qty">Qty</th>
+                <th class="price">Price</th>
+                <th class="add">to cart</th>
             </tr>
-        </thead>
+        </thead> </table>
+        
+          <div class="table-wrapper-scroll-y my-custom-scrollbar"> 
+          <table class="table table-dark table-hover table-scroll table-striped">
         <tbody>
           {{#each data }}
             <tr>
@@ -45,9 +47,8 @@
   </div>
   <div class="col" style="margin-top:10%">  {{!-- phan bill  --}}
     {{#if cartitem}}
-    <form method="post" action="printbill">
       <div class="table-wrapper-scroll-y my-custom-scrollbar"> 
-          <table class="table table-scroll table-striped">
+          <table class="table table-dark table-hover table-scroll table-striped">
         <thead>
             <tr>
                 <th class="name">Product Name</th>
@@ -56,8 +57,8 @@
                 <th >modify</th>
             </tr>
         </thead>
-
         <tbody>
+          <form method="post" action="printbill">
           {{#each cartitem}}
             <tr>
               {{!-- these hidden input could be submit to create a bill but im too lazy for that so i will just store time date and price --}}
@@ -67,16 +68,16 @@
                 <td class="qty">{{this.quantity}}</td>
                 {{!-- <input type="hidden" name="price" value="{{this.price}}"> --}}
                 <td class="price">{{this.price}}</td>
-                <td><a href='delcart/{{this._id}}'>delete</a> <i class="fas fa-trash"></i></td>
+                <td><a href='/adminmanage/bills/delcart/{{this._id}}'>delete</a> <i class="fas fa-trash"></i></td>
             </tr>
           {{/each}}
         </tbody>
           </table>            
       </div>
-        <table class="table table-clear" >
+        <table class="table table-dark table-hover clear" >
               <tbody>
                 <tr>
-                  <td class="left">
+                  <td class="">
                        <strong>Subtotal</strong>
                    </td>
                                     
@@ -85,12 +86,24 @@
                   </tr>
             </tbody>  
         </table>    
-      <div class="buttons d-flex flex-row mt-5 gap-3">    <button type="submit" class="btn2 btn-outline-dark" id="createbutton"><i  ></i>Create Bill</button> </div> 
+        <div class="bill button" style="display: flex;justify-content: space-between;">
+          <button class="btn-outline-dark" ><a href="/adminmanage/bills/clear">clear</a></button> 
+          <button type="submit" class="btn-outline-dark" id="createbutton"><i  ></i>Create Bill</button> 
+        </div>
+             
+      {{else}}
+        <table class="table table-dark table-hover">
+        <thead>
+            <tr>
+                <th class="table-dark">Product Name</th>
+                <th class="table-dark">Quantity</th>
+                <th class="table-dark">Unit Price</th>
+                <th >modify</th>
+            </tr>
+        </thead>
+      </table> 
       {{/if}}
       </form>
-      {{#if cartitem}}
-       <div class="buttons d-flex flex-row mt-5 gap-3">    <button class="btn2 btn-outline-dark" ><a href="bills/clear">clear</a></button> </div>
-       {{/if}}
     </div>
 </div>
 

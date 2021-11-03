@@ -7,6 +7,7 @@ const salt = bcrypt.genSaltSync(saltRounds);
 
 
 class registercontroller {
+    
     // [post] /action/register
    async register(req, res, next){
        var user = req.body.username

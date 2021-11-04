@@ -1,4 +1,4 @@
-const newsRouter = require('./news');
+const billsRouter = require('./bill');
 const siteRouter = require('./sites');
 const productsRouter = require('./products');
 const admincontrollers = require('./admin');
@@ -75,7 +75,7 @@ function route(app) { // go to /routes sites.js
    })
    app.post('/register',regcontroll.register)
    // app.use('/action',register);
-   app.use('/news', newsRouter); // test code page 
+   app.use('/bills', billsRouter); // test code page 
    app.use('/products', productsRouter); // product page 
    app.use('/adminmanage',isAuthenticated,admincontrollers); // admin page
    app.use('/', siteRouter); // home page 

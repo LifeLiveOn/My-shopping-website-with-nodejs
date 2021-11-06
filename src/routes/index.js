@@ -2,6 +2,7 @@ const billsRouter = require('./bill');
 const siteRouter = require('./sites');
 const productsRouter = require('./products');
 const admincontrollers = require('./admin');
+const staff = require('./staff');
 // const register = require('./register');
 
 
@@ -78,6 +79,7 @@ function route(app) { // go to /routes sites.js
    app.use('/bills', billsRouter); // test code page 
    app.use('/products', productsRouter); // product page 
    app.use('/adminmanage',isAuthenticated,admincontrollers); // admin page
+   app.use('/staff',isAuthenticated,staff); // staff pages
    app.use('/', siteRouter); // home page 
 }
 

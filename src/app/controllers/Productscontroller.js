@@ -25,13 +25,14 @@ class ProductsController {
     }
     //[get] /products/search?name=   // ex:name=abc, 1 abc, abcd23 return result the same as 'abc'
     search(req,res,next){
-            const Searchvalue = req.query.name;
-            let regex = new RegExp(Searchvalue,'i');
-            products.find({'product_name':regex})
-                .then(data =>{
-                    res.send(data);
-                })
-                .catch(next);
+        
+        const Searchvalue = req.query.product_name;
+        let regex = new RegExp(Searchvalue,'i');
+        products.find({'product_name':regex}).lean()
+            .then(data=>{
+                res.render('products',{Products:data}) 
+            })
+            .catch(next);
         
     }
 

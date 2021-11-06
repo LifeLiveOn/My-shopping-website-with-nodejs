@@ -8,6 +8,8 @@ const bills = require('../../models/bill');
 class Admincontrollers{
     // [get] main menu path: /adminmanage
     index(req, res,next){
+        // const check = req.session.isAuth;
+        // console.log(check);
         res.redirect('/action/login');
         //res.render('admin/adminmenu');
     }
@@ -20,19 +22,29 @@ class Admincontrollers{
             .catch(next);
         
     }
-    toCart(req, res, next){
+    // ghi chu can sua lai add to cart;
+   async toCart(req, res, next){
+    /// xai if else o day 
+    // cart find id if(data) quantity +1, else product find(id) save product.
        const proid = req.params.id;
-       products.find({_id: proid}).lean()
-           .then(data=>{
-               const cartData = data[0];
-               var id = data[0]._id + randomstring.generate(7);
-               cartData._id = id;
-               cartData.quantity = 1;
-               const cart = new carts(cartData);
-               cart.save();
-               res.redirect('/adminmanage/bills/find?product_name=')
-           })
-           .catch(next);
+    await carts.countDocuments({_id:proid}).lean()
+        .then(count=>{
+            console.log(count)
+                if(count>0){
+                    carts.updateOne({_id:proid},{$inc:{quantity:1}}).lean().exec()
+                    res.redirect('/adminmanage/bills/find?product_name=')
+                }
+                else{
+                    products.find({_id: proid}).lean()
+                        .then(data=>{
+                    const cartData = data[0];
+                    cartData.quantity = 1;
+                    const cart = new carts(cartData);
+                    cart.save();
+                    res.redirect('/adminmanage/bills/find?product_name=')
+                        })
+                }   
+            })
        
     }
     // show both search and cart 
@@ -87,11 +99,15 @@ class Admincontrollers{
     }
     //print out the bill and save it to database
     printbill(req, res, next){
-        console.log((req.body.object[0]))
+        // const check = req.session.isAuth;
+        // console.log(check);
+        // console.log((req.body.object[0]))
         // res.send("wait");
         // const objectsData = req.body;
+        console.log(req.body)
         const result = {};
         result.detail = req.body.object;
+        result.quantity = req.body.quantity;
         result.price = req.body.total_price;
         result.date = new Date()
         // objectsData.detail = req.body.object;
@@ -106,6 +122,13 @@ class Admincontrollers{
     clear(req, res, next){
         carts.deleteMany({})
             .then(() => res.redirect('/adminmanage/bills'))            
+    }
+    updateqty(req, res, next){
+        const newquantity = req.query.qty;
+        const Id = req.query.id;
+        res.send(req.query);
+        carts.updateOne({_id:Id},{quantity:newquantity}).lean().exec();
+        res.redirect('/adminmanage/bills/find?product_name=')
     }
 
 }

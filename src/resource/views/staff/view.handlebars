@@ -1,0 +1,43 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js">
+</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js">
+</script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js">
+</script>
+<script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js">
+</script>
+
+
+<div class="container-fluid" style="margin-top:10%">
+    <h2><a href="/staff/create">add staff</a></h2>
+    <table class="table" id="sortTable">
+<thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">storeinfo</th>
+    </tr>
+  </thead>
+  <tbody>
+      {{!-- bo foreach vao day kem data dc su dung --}}
+      {{#each data}}
+    <tr>
+        <th >{{this._id}}
+            <a href="/staff/delete?id={{this._id}}"><i class="fas fa-user-minus"></i>delete</a>
+        </th>
+        <td>{{this.emp_name}}</td>
+        <td>{{this.email}}</td>
+        <td>{{this.store}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+<script>
+$('#sortTable').DataTable();
+</script>
+</div>

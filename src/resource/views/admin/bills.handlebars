@@ -59,12 +59,16 @@
         </thead>
         <tbody>
           <form method="post" action="/adminmanage/printbill">
+          {{cartitem}}
           {{#each cartitem}}
             <tr>
               {{!-- these hidden input could be submit to create a bill but im too lazy for that so i will just store time date and price --}}     
                 <td class="name">{{this.product_name}}</td>   
-                <td class="qty">{{this.quantity}}</td>
+                {{!-- <td><input type="number" id="quantity" min="1" max="20" value="{{this.quantity}}"  step="1"
+                       placeholder="1"> <button type='button' onclick="">update qty</button></td> --}}
+                <td class="qty">{{this.quantity}}</td>       
                 <td class="price">{{this.price}}</td>
+                <input type="hidden" id="_id" value="{{this._id}}">
                 <input type="hidden" name="object" value="{{jsonify this}}">
                 <td><a href='/adminmanage/bills/delcart/{{this._id}}'>delete</a> <i class="fas fa-trash"></i></td>
             </tr>
@@ -87,7 +91,6 @@
         <div class="bill button" style="display: flex;justify-content: space-between;">
            <button type="button" class="btn-outline-dark" ><a href="/adminmanage/bills/clear">clear</a></button> 
           <button type="submit" class="btn-outline-dark" id="createbutton"><i  ></i>Create Bill</button> 
-
           </form>
         </div>
              
@@ -115,5 +118,11 @@ function myFunction() {
   } else {
     x.style.display = "none";
   }
+}
+function testing() {
+  var qty = document.getElementById('quantity');
+  var id = document.getElementById('_id');
+  var result = "id="+id+"&qty="+qty;
+   window.location.assign("/adminmanage/updateqty?"+result);
 }
 </script>

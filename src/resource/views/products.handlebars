@@ -1,5 +1,15 @@
 
-<div class="container">
+<div class="container-fluid" style="margin-top:5%">
+  <h1><a href='/adminmanage' style="color:black";> go back</a></h1> 
+  <div class="input-group" style="display: flex;justify-content: center;">
+    <form method="get" action="/products/search"> 
+        <div class="col-xs-3" style="margin-top: 110px;width:100%">
+            <h3 for="productName"  class="form-label">Searching product</h3>
+            <input type="text" style="margin-left:0%;width:100%;" class="form-control" style="text-transform: lowercase" name="product_name" placeholder="Enter your Product name">
+            <button type="submit" style="margin-left:30%" class="btn1 btn-outline-dark" id="submitbutton"><i class="fas fa-search" ></i>Find Product</button>
+        </div>
+    </form>
+  </div>
   <div class="row">
     {{#each Products }}
       <div class="col-4"  style= "padding:5%">
@@ -9,8 +19,9 @@
           </a>
               <div class="card-body">
                 <h5 class="card-title">{{this.product_name}}</h5>
-                <p class="card-text">{{this.description}}</p>
-                <a href="/products/{{this.slug}}" class="btn btn-primary">View detail</a>
+                {{!-- <p class="card-text">{{this.description}}</p> --}}
+                <p class="cart-text">price: {{this.price}}$, stock:{{this.stock}}</p>
+                <a href="/products/{{this.slug}}" class="btn btn--primary  uppercase">View detail</a>
               </div>
         </div>
       </div>

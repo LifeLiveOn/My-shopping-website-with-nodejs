@@ -33,7 +33,8 @@ var hbs = exphbs.create({
         },
         sum:function(json){
             return json.price * json.quantity;
-        }
+        },
+        
     }
 });
 app.engine('handlebars', hbs.engine); // use engine handle bar template
